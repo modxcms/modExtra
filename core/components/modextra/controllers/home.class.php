@@ -33,7 +33,12 @@ class modExtraHomeManagerController extends modExtraBaseManagerController {
     public function loadCustomCssJs() {
         $this->addJavascript($this->modextra->config['jsUrl'].'mgr/widgets/items.grid.js');
         $this->addJavascript($this->modextra->config['jsUrl'].'mgr/widgets/home.panel.js');
-        $this->addLastJavascript($this->modextra->config['jsUrl'].'mgr/sections/home.js');
+        $this->addJavascript($this->modextra->config['jsUrl'].'mgr/sections/home.js');
+        $this->addHtml('<script type="text/javascript">
+        Ext.onReady(function() {
+            MODx.load({ xtype: "modextra-page-home"});
+        });
+        </script>');
     }
     public function getTemplateFile() { return $this->modextra->config['templatesPath'].'home.tpl'; }
 }
